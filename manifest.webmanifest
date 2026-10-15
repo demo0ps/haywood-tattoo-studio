@@ -1,0 +1,54 @@
+{
+  "name": "Haywood Tattoo Studio — Custom Tattoo & Piercing, Pretoria",
+  "short_name": "Haywood",
+  "description": "Private, by-appointment tattoo and piercing studio in Pretoria. Build a brief, get an indicative range, book a studio or mobile session.",
+  "id": "https://demo0ps.github.io/haywood-tattoo-studio/",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0d0d0f",
+  "theme_color": "#b9142b",
+  "lang": "en-ZA",
+  "dir": "ltr",
+  "categories": [
+    "business",
+    "lifestyle",
+    "shopping"
+  ],
+  "icons": [
+    {
+      "src": "assets/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Build a tattoo brief",
+      "url": "./#services",
+      "description": "Open the design concierge and get an indicative range"
+    },
+    {
+      "name": "Lookbook",
+      "url": "./#lookbook",
+      "description": "Ready-to-book and adaptable pieces"
+    },
+    {
+      "name": "Pricing",
+      "url": "./#pricing",
+      "description": "How Haywood quotes a piece"
+    }
+  ]
+}

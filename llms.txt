@@ -1,0 +1,70 @@
+# Custom Tattoo & Piercing Studio in Pretoria
+
+> Custom tattoo and piercing in Pretoria, by private appointment or on location. Get an indicative range in minutes, then book. WhatsApp 061 759 3378.
+
+Private, by-appointment tattoo and piercing studio in central Pretoria, Gauteng, South Africa. One artist, no walk-ins. Sessions also run on location within roughly 30 km. Every price on this site is an **indicative range** built from the client brief — the artist confirms the final quote before a design is locked.
+
+## Contact and booking
+
+- WhatsApp / calls: 061 759 3378 (https://wa.me/27617593378)
+- Instagram: @haywood_studio (https://instagram.com/haywood_studio)
+- Website: https://demo0ps.github.io/haywood-tattoo-studio/
+- Location: Pretoria, South Africa. The exact studio address is private and is shared once a session is confirmed.
+- Hours: Tuesday to Saturday, by appointment only.
+- Age: 18 or older with a valid South African ID or passport, checked at the first session.
+
+## Services
+
+- Custom tattoos: New pieces, cover-ups, touch-ups, blackwork, illustrative, fine-line, colour, and larger projects.
+- Piercing: Thoughtful placement, quality jewelry, clear preparation, and aftercare you can actually follow.
+- Mobile sessions: Bring the private Haywood experience to your space. Travel availability and fees are confirmed in your brief.
+
+## Indicative pricing
+
+- Studio minimum: R1,800 — The floor for any custom piece, including small blackwork. It covers the design time, setup, sterilisation and the first hour on the chair.
+- Session rate: R1,200 /hour — Applied once you are past the minimum. Long days are quoted as a project, not clocked hour by hour.
+- Deposit: 30% — Taken from the lower end of your range to hold the date, then credited back against the final price.
+- Mobile travel: R350 — Within Pretoria and roughly 30 km around it. Anything further gets quoted with you before it is booked.
+- Adds: R700 – R1,400 — Medium and large sizes and high-detail work move the number up. Colour work adds about R700.
+
+## Live studio special
+
+- Spring sitting special: Ten per cent off any custom piece quoted from R4,000, for weekday studio sessions booked before the end of November. (10% off quotes from R4000, running until 2026-11-30). Applied automatically to the indicative range; still confirmed by the artist.
+
+## Lookbook (ready or adaptable artwork)
+
+- Serpent / Sun Study — Adaptable concept, R 3,800 – R 5,200
+- Red Altar — Ready-to-book flash, R 2,900
+- Thorn Eye — Repeatable study, R 2,200 – R 3,100
+
+## Aftercare (general guidance, not medical advice)
+
+- Fresh tattoo: covering off after 3–5 hours, gentle wash twice daily, thin moisturiser for about two weeks, no picking, no swimming or direct sun for six weeks, SPF 50 once healed.
+- Fresh piercing: sterile saline once or twice daily, do not twist or remove jewelry, avoid friction, no swimming during healing. Lobes around 6 weeks, cartilage 3–9 months.
+- The studio does not diagnose or treat infections or reactions — anyone concerned should see a clinician.
+
+## Policies that shape a quote
+
+- Deposit: 30% of the lower end of the range, credited to the final price.
+- Cover-ups and touch-ups: subject to assessment from clear daylight photos.
+- Designs remain the artist's intellectual property; the tattoo belongs to the client.
+- Payments run through a hosted Yoco checkout; the studio never stores card data.
+
+## FAQ (full answers in llms-full.txt)
+
+- How much does a custom tattoo cost in Pretoria?
+- Do you tattoo walk-ins?
+- How do I book a session?
+- Can you come to me?
+- How big is the deposit?
+- Do you do cover-ups and touch-ups?
+- How old do I have to be?
+- What aftercare does a new piercing need?
+- Who owns the design afterwards?
+- Are the prices on this site final?
+
+## Files
+
+- Page: https://demo0ps.github.io/haywood-tattoo-studio/
+- Full facts: https://demo0ps.github.io/haywood-tattoo-studio/llms-full.txt
+- Structured data: JSON-LD in the page head (TattooParlor with OfferCatalog, FAQPage, WebSite)
