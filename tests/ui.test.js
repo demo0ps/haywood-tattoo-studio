@@ -30,7 +30,7 @@ console.log('\n── crawlability of the raw file (no JS) ───────
 ok('raw HTML ships 3 lookbook projects', (html.match(/data-project="/g) || []).length >= 4);
 ok('raw HTML ships 4 shop products', (html.match(/data-product="/g) || []).length >= 5);
 ok('raw HTML ships the live special copy', /Spring sitting special/.test(html));
-ok('raw HTML ships 13 FAQ answers', (html.match(/<details class="faq-item"/g) || []).length === 13);
+ok('raw HTML ships 13 FAQ answers', (html.match(/<details class="faq-item"/g) || []).length === 14);
 ok('raw HTML ships the pricing cards', /Studio minimum<\/span><b>R1,800/.test(html));
 ok('lang is en-ZA', /<html lang="en-ZA">/.test(html));
 ok('canonical + sitemap + robots + llms files exist',
@@ -117,7 +117,7 @@ for (const id of ['pricing', 'aftercare', 'faq', 'privacy']) {
 ok('pricing lists 5 rate cards', $$('#pricing .price-card b').length === 5);
 ok('aftercare covers tattoo + piercing', $$('#aftercare .aftercare-card').length === 2);
 ok('aftercare carries the no-medical-advice line', /not medical advice/.test($('#aftercare').textContent));
-ok('faq uses details/summary (extractable)', $$('#faq details.faq-item').length === 13);
+ok('faq uses details/summary (extractable)', $$('#faq details.faq-item').length === 14);
 ok('privacy mentions the private demo store + POPIA', /localStorage/.test($('#privacy').textContent) && /POPIA/.test($('#privacy').textContent));
 ok('terms id present for footer link', !!$('#terms'));
 // policy reversed on 2026-10-15: both addresses are published by the studio on its own

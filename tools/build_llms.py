@@ -85,7 +85,18 @@ studio = re.search(r"legalName:'(.*?)',phone", s)
 title = clean(re.search(r'<title>(.*?)</title>', s, re.S).group(1))
 desc = clean(re.search(r'<meta name="description" content="(.*?)"', s).group(1))
 
-assert len(prices) == 5 and len(faq) == 13 and len(services) == 3 and len(book) == 3, \
+# ------------------------------------------------------------- shop + delivery
+shopsec = slice_section('id="shop"')
+shelf = []
+for art in re.split(r'<article class="product"', shopsec)[1:]:
+    nm = re.search(r'<h3>(.*?)</h3>', art, re.S)
+    pr = re.search(r'<span>(.*?)</span>', art, re.S)
+    if nm and pr:
+        shelf.append((clean(nm.group(1)), clean(pr.group(1))))
+ship = re.search(r"shipping:\{courier:'([^']*)',fee:(\d+),freeOver:(\d+),eta:'([^']*)'", s)
+assert len(shelf) == 4 and ship, f'shop drift: shelf={len(shelf)} ship={bool(ship)}'
+
+assert len(prices) == 5 and len(faq) == 14 and len(services) == 3 and len(book) == 3, \
     f'extraction drift: prices={len(prices)} faq={len(faq)} services={len(services)} lookbook={len(book)}'
 assert len(branches) == 2 and all(len(b['hours']) == 4 for b in branches), \
     f'visit drift: branches={len(branches)} hours={[len(b["hours"]) for b in branches]}'
@@ -135,6 +146,12 @@ L += ['', '## Aftercare (general guidance, not medical advice)', '',
       '- Fresh tattoo: covering off after 3–5 hours, gentle wash twice daily, thin moisturiser for about two weeks, no picking, no swimming or direct sun for six weeks, SPF 50 once healed.',
       '- Fresh piercing: sterile saline once or twice daily, do not twist or remove jewelry, avoid friction, no swimming during healing. Lobes around 6 weeks, cartilage 3–9 months.',
       '- The studio does not diagnose or treat infections or reactions — anyone concerned should see a clinician.',
+      '', '## Shop, delivery & collection', '',
+      '- On the shelf: ' + '; '.join(f'{n} {p}' for n, p in shelf) + '.',
+      f'- Courier nationwide via {ship.group(1)}: R{int(ship.group(2)):,} flat, free over '
+      f'R{int(ship.group(3)):,}, usually {ship.group(4)}.',
+      '- Collection is free at either studio and can be timed with an appointment.',
+      '- The studio confirms the delivery address and the contents before dispatch.',
       '', '## Policies that shape a quote', '',
       '- Deposit: 30% of the lower end of the range, credited to the final price.',
       '- Cover-ups and touch-ups: subject to assessment from clear daylight photos.',
@@ -157,13 +174,19 @@ for b in branches:
     for lbl, txt in b['hours']:
         F += [f'- {lbl}: {txt}']
     F += ['', f'- Amenities: {", ".join(b["amenities"]) or "not listed"}', '']
-F += ['## Piercing Fridays', '', fri_copy, '', f'- Rate: {fri_price} · eligible: {fri_svc}',
+F += ['## Shop (jewelry and aftercare)', '']
+for n, pr in shelf:
+    F += [f'- {n}: {pr}']
+F += ['', f'- Delivery: {ship.group(1)}, R{int(ship.group(2)):,} flat, free over R{int(ship.group(3)):,}, '
+      f'usually {ship.group(4)}.', '- Collection: free at either branch, timed with the appointment.', '',
+      '## Piercing Fridays', '', fri_copy, '', f'- Rate: {fri_price} · eligible: {fri_svc}',
       f'- {fri_perk}', f'- Conditions: {fri_terms}', '', '## FAQ with answers', '']
 for q, a in faq:
     F += [f'### {q}', '', a, '']
 F += ['## Page structure', '',
       'hero + live offer · lookbook · about · design concierge · services · Piercing Fridays · pricing · '
-      'aftercare · visit (locations, hours, artists, reputation) · FAQ · shop (jewelry and aftercare) · privacy · terms', '',
+      'aftercare · visit (locations, hours, artists, reputation) · FAQ · shop (jewelry, aftercare, delivery '
+      'and collection) · privacy · terms', '',
       '## Note on this build', '',
       'This is a front-end prototype: prices, hours, lookbook projects and products are editable demo values held in the '
       'browser, the checkout is a Yoco test flow, and no live payment, email or WhatsApp API call is made. '

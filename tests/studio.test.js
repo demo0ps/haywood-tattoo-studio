@@ -218,7 +218,8 @@ ok('amenities published', biz.amenityFeature.some(a => /Wheelchair/.test(a.name)
 ok('areaServed widened to both cities', JSON.stringify(biz.areaServed).includes('Tshwane'));
 ok('founder/employee still there, memberOf removed', biz.employee.name === 'Yuran' && biz.memberOf === undefined);
 ok('sameAs now includes the studio website', biz.sameAs.includes('https://www.haywoodstudio.com') && biz.sameAs.includes('https://instagram.com/haywood_studio'));
-ok('FAQ graph grew with the new questions', ld['@graph'].find(x => x['@type'] === 'FAQPage').mainEntity.length === 13);
+const faqCount = (html.match(/<details class="faq-item"/g) || []).length;
+ok('FAQ graph matches the questions on the page', ld['@graph'].find(x => x['@type'] === 'FAQPage').mainEntity.length === faqCount && faqCount >= 13, 'faq=' + faqCount);
 ok('schema is still valid JSON after an admin save', (() => { ev("save()"); JSON.parse($('script[type=\"application/ld+json\"]').textContent); return true })());
 
 console.log('\n── admin shell wiring ──────────────────────────────');

@@ -75,6 +75,13 @@ Tattoo sessions run by appointment; standard piercings can sometimes be taken as
 - Fresh piercing: sterile saline once or twice daily, do not twist or remove jewelry, avoid friction, no swimming during healing. Lobes around 6 weeks, cartilage 3–9 months.
 - The studio does not diagnose or treat infections or reactions — anyone concerned should see a clinician.
 
+## Shop, delivery & collection
+
+- On the shelf: Sterile Saline Mist R180; Onyx Clicker Hoop R420; Red Stone Labret R560; Fresh Ink Care Kit R320.
+- Courier nationwide via The Courier Guy: R120 flat, free over R1,500, usually 2–4 working days.
+- Collection is free at either studio and can be timed with an appointment.
+- The studio confirms the delivery address and the contents before dispatch.
+
 ## Policies that shape a quote
 
 - Deposit: 30% of the lower end of the range, credited to the final price.
@@ -97,6 +104,7 @@ Tattoo sessions run by appointment; standard piercings can sometimes be taken as
 - Which piercings do you do, and do you do surface piercings?
 - What are Piercing Fridays?
 - Where are you, and can I just park outside?
+- Do you ship jewelry and aftercare?
 
 ## Files
 
@@ -128,6 +136,16 @@ Tattoo sessions run by appointment; standard piercings can sometimes be taken as
 - Sun: Closed
 
 - Amenities: Street parking, Credit & debit cards
+
+## Shop (jewelry and aftercare)
+
+- Sterile Saline Mist: R180
+- Onyx Clicker Hoop: R420
+- Red Stone Labret: R560
+- Fresh Ink Care Kit: R320
+
+- Delivery: The Courier Guy, R120 flat, free over R1,500, usually 2–4 working days.
+- Collection: free at either branch, timed with the appointment.
 
 ## Piercing Fridays
 
@@ -191,9 +209,13 @@ A standing weekly rate: selected nose, ear and belly piercings at R100–R150, F
 
 Two locations: the private flagship at 296 Francis Baard Street, Pretoria Central, and a second studio at 2241 Martha Modise Street in Mabopane. Pretoria Central has on-site and wheelchair-accessible parking; Mabopane is street parking. Both take cards and mobile pay, and both run on a book — so lock the time before you travel.
 
+### Do you ship jewelry and aftercare?
+
+Yes. Courier anywhere in South Africa is a flat R120 and free once your bag reaches R1,500 — usually 2–4 working days. Collection at either studio is free and can wait for your appointment. The studio confirms the address and the contents before anything is dispatched, and jewelry is checked and sized by the artist first.
+
 ## Page structure
 
-hero + live offer · lookbook · about · design concierge · services · Piercing Fridays · pricing · aftercare · visit (locations, hours, artists, reputation) · FAQ · shop (jewelry and aftercare) · privacy · terms
+hero + live offer · lookbook · about · design concierge · services · Piercing Fridays · pricing · aftercare · visit (locations, hours, artists, reputation) · FAQ · shop (jewelry, aftercare, delivery and collection) · privacy · terms
 
 ## Note on this build
 
