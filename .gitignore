@@ -7,3 +7,4 @@ __pycache__/
 .npm/
 .npm-cache/
 node_modules/
+tools/.research-state*.json

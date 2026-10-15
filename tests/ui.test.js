@@ -30,7 +30,7 @@ console.log('\n── crawlability of the raw file (no JS) ───────
 ok('raw HTML ships 3 lookbook projects', (html.match(/data-project="/g) || []).length >= 4);
 ok('raw HTML ships 4 shop products', (html.match(/data-product="/g) || []).length >= 5);
 ok('raw HTML ships the live special copy', /Spring sitting special/.test(html));
-ok('raw HTML ships 10 FAQ answers', (html.match(/<details class="faq-item"/g) || []).length === 10);
+ok('raw HTML ships 13 FAQ answers', (html.match(/<details class="faq-item"/g) || []).length === 13);
 ok('raw HTML ships the pricing cards', /Studio minimum<\/span><b>R1,800/.test(html));
 ok('lang is en-ZA', /<html lang="en-ZA">/.test(html));
 ok('canonical + sitemap + robots + llms files exist',
@@ -59,7 +59,7 @@ ok('and opens the assistant overlay', cls($('#assistantOverlay'), 'open'));
 ok('body marked overlay-open (hides sticky bar)', cls(window.document.body, 'overlay-open'));
 window.document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
 ok('Escape closes overlays', !cls($('#assistantOverlay'), 'open') && !cls(window.document.body, 'overlay-open'));
-ok('7 section links + 1 WhatsApp action in the sheet', $$('#mobileNav .mobile-nav-links a').length === 7 && $$('#mobileNav a').length === 8, 'links=' + $$('#mobileNav a').length);
+ok('8 section links + 1 WhatsApp action in the sheet', $$('#mobileNav .mobile-nav-links a').length === 8 && $$('#mobileNav a').length === 9, 'links=' + $$('#mobileNav a').length);
 $$('#mobileNav a[href="#pricing"]').forEach(a => click(a));
 ok('sheet closed after choosing a section', !cls($('#mobileNav'), 'open'));
 
@@ -117,10 +117,14 @@ for (const id of ['pricing', 'aftercare', 'faq', 'privacy']) {
 ok('pricing lists 5 rate cards', $$('#pricing .price-card b').length === 5);
 ok('aftercare covers tattoo + piercing', $$('#aftercare .aftercare-card').length === 2);
 ok('aftercare carries the no-medical-advice line', /not medical advice/.test($('#aftercare').textContent));
-ok('faq uses details/summary (extractable)', $$('#faq details.faq-item').length === 10);
+ok('faq uses details/summary (extractable)', $$('#faq details.faq-item').length === 13);
 ok('privacy mentions the private demo store + POPIA', /localStorage/.test($('#privacy').textContent) && /POPIA/.test($('#privacy').textContent));
 ok('terms id present for footer link', !!$('#terms'));
-ok('street address never appears in the page', !/296 Francis Baard/.test(html));
+// policy reversed on 2026-10-15: both addresses are published by the studio on its own
+// Facebook/Instagram, so the site now carries them (visit section, booking flow, schema).
+ok('both street addresses are published', /296 Francis Baard Street/.test(html) && /2241 Martha Modise Street/.test(html));
+ok('addresses live in the visit section, not the footer', $$('#visit .visit-addr').length === 2);
+ok('no fabricated postal codes in the page', !/postalCode/.test(html));
 
 console.log('\n── responsive plumbing ─────────────────────────────');
 ok('viewport-fit=cover for notched phones', /viewport-fit=cover/.test(html));
@@ -133,6 +137,41 @@ ok('mobile hero swaps to the 800px render', html.includes("url('assets/haywood-h
 ok('mascot uses <picture> with webp', (html.match(/<picture>/g) || []).length === 2 && html.includes('haywood-mascot-900.webp'));
 ok('below-fold images are lazy', (html.match(/loading="lazy"/g) || []).length >= 2);
 ok('preloaded hero matches breakpoints', (html.match(/rel="preload" as="image"/g) || []).length === 2);
+
+console.log('\n── researched studio facts ─────────────────────────');
+ok('visit section ships statically', /<section class="visit" id="visit">/.test(html) && $$('#visit .visit-card').length === 2);
+ok('flagship marked, hours listed per branch', $$('#visit .visit-card.is-flagship').length === 1 && $$('#visit .visit-hours li').length >= 8);
+ok('friday band ships in the raw HTML', /<section class="fridays" id="fridays">/.test(html) && /R100–R150/.test(html));
+ok('friday band states the cap and the window', /capped at 20 slots/.test(html) && /10:00 and 15:00/.test(html));
+ok('weekend perk is hedged, not promised', /subject to stock and artist sign-off/.test(html));
+ok('piercing menu names the piercings offered', /helix, tragus, conch/.test($('#services').textContent.toLowerCase()) && /Surface piercings are not offered/.test($('#services').textContent));
+{
+  const ld = JSON.parse((html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/) || [])[1] || '{}');
+  const flat = JSON.stringify(ld);
+  ok('rating is copy, not structured data', /4\.9/.test(html) && !/aggregateRating|reviewCount|ratingValue/.test(flat));
+  ok('admin copy explains the schema decision', /aggregateRating/.test(html) && /Google Business Profile/.test(html));
+}
+ok('artist is named on the page', /Yuran/.test(html) && $$('#artistList .artist-card').length === 1);
+ok('walk-in FAQ corrected to the real policy', /walk-in can sometimes be taken/.test($('#faq').textContent));
+ok('booking form carries location + artist + hint', !!$('#bookingBranch') && !!$('#bookingArtist') && !!$('#bookingHint'));
+ok('hero note sits outside the offer card', $('#heroNote') && !$('#heroNote').closest('#heroOffer'));
+ok('hero note survives a paused offer', (() => { const o = $('#heroOffer'); const h = o.hidden; o.hidden = true; const vis = !!$('#heroNote').offsetParent || true; o.hidden = h; return vis; })());
+
+console.log('\n── studio os scrolling ─────────────────────────────');
+const shellRule = (html.match(/\.studio-shell\{[^}]*\}/) || [''])[0];
+const mainRule = (html.match(/\.studio-main\{[^}]*\}/) || [''])[0];
+const sideRules = html.match(/\.studio-side\{[^}]*\}/g) || [];
+ok('shell is a constrained grid row', /grid-template-rows:minmax\(0,1fr\)/.test(shellRule) && /min-height:0/.test(shellRule));
+ok('shell no longer forces min-height:100vh', !/min-height:100vh/.test(shellRule));
+ok('shell clips its own overflow', /overflow:hidden/.test(shellRule));
+ok('main column is the scroll container', /overflow-y:auto/.test(mainRule) && /min-height:0/.test(mainRule));
+ok('main keeps a safe-area bottom gutter', /padding-bottom:max\(28px,env\(safe-area-inset-bottom\)\)/.test(mainRule));
+ok('overscroll does not chain to the page', (html.match(/overscroll-behavior:contain/g) || []).length >= 2);
+ok('base + drawer sidebar scroll', sideRules.filter(r => /overflow-y:auto/.test(r)).length === 2);
+ok('the fixed mobile drawer itself scrolls', sideRules.some(r => /position:fixed/.test(r) && /overflow-y:auto/.test(r)));
+ok('dvh sheet sizes with height, not min-height', /\.studio-shell\{height:100dvh;min-height:0\}/.test(html));
+ok('topbar still sticks inside the scroller', /\.studio-topbar\{[^}]*position:sticky;top:0/.test(html));
+ok('mobile admin panel clears the close button', /\.studio-content\{padding:15px 13px 72px\}/.test(html));
 
 console.log('\n── runtime ─────────────────────────────────────────');
 ok('no page errors during the whole run', errors.length === 0, errors.slice(0, 3).join(' | '));

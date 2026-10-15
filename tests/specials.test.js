@@ -35,6 +35,8 @@ setTimeout(() => {
   console.log('\n── load ─────────────────────────────────────────────');
   ok('page scripts ran without errors', errors.length === 0, errors.slice(0, 3).join(' | '));
   ok('config.specials seeded', ev('config.specials.length') === 1);
+  ok('friday rate card seeded separately from specials', ev("config.fridays.live") === true && ev("config.fridays.day") === 'fri');
+  ok('friday card never masquerades as a special', ev("config.specials.some(s=>s.id==='piercing-fridays')") === false);
   ok('special id present', ev('config.specials[0].id') === 'spring-sitting');
 
   console.log('\n── state machine ────────────────────────────────────');
@@ -50,6 +52,7 @@ setTimeout(() => {
   ev("config.specials=config.specials.slice(0,1)");
 
   console.log('\n── scope guards ─────────────────────────────────────');
+  ok('friday rate card does not apply to tattoo quotes', ev("specialFor('tattoo') && specialFor('tattoo').id") === 'spring-sitting');
   ok('tattoo scope matches', ev("specialFor('tattoo') && specialFor('tattoo').id") === 'spring-sitting');
   ok('piercing excluded', ev("specialFor('piercing')") === null);
   ok('flash excluded', ev("specialFor('flash')") === null);
@@ -100,11 +103,21 @@ setTimeout(() => {
   ok('scope label rendered', ev("document.getElementById('offerScope').textContent") === 'Custom tattoo work');
   ok('card visible while live', ev("document.getElementById('heroOffer').hidden") === false);
   ev("config.specials[0].live=false;renderSpecial()");
-  ok('card hidden when paused', ev("document.getElementById('heroOffer').hidden") === true);
+  ok('weekly rate card takes the hero when no dated offer is live',
+    ev("document.getElementById('heroOffer').hidden") === false &&
+    ev("document.getElementById('offerTitle').textContent") === 'Piercing Fridays' &&
+    ev("document.getElementById('offerCta').dataset.action") === 'book-piercing');
   ev("config.specials[0].end='2020-02-01';config.specials[0].live=true;renderSpecial()");
-  ok('card hidden after expiry', ev("document.getElementById('heroOffer').hidden") === true);
-  ev("config.specials[0].end='2026-11-30';renderSpecial()");
-  ok('card returns when back in range', ev("document.getElementById('heroOffer').hidden") === false);
+  ok('weekly card still fills the hero after the dated offer expires',
+    ev("document.getElementById('offerTitle').textContent") === 'Piercing Fridays');
+  ev("config.fridays.live=false;renderSpecial()");
+  ok('hero hides only when both engines are off', ev("document.getElementById('heroOffer').hidden") === true);
+  ev("config.fridays.live=true;config.specials[0].end='2026-11-30';renderSpecial()");
+  ok('dated campaign outranks the weekly card',
+    ev("activeSpecial().id") === 'spring-sitting' &&
+    ev("document.getElementById('offerTitle').textContent") === 'Spring sitting special' &&
+    ev("document.getElementById('offerCta').dataset.action") === 'open-estimate' &&
+    ev("document.getElementById('heroOffer').dataset.friday") === undefined);
 
   console.log('\n── admin CRUD ───────────────────────────────────────');
   ok('admin list rendered', ev("document.querySelectorAll('#adminSpecials .special-row').length") === 1);

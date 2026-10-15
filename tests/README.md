@@ -17,3 +17,11 @@ node run-all.js
 | `assistant.test.js` | concierge intake flow, budget-conflict advice, artist-review gate, handoff to WhatsApp, refine-without-duplicate-leads, honesty guardrails |
 
 No framework, no build step — plain assertions, exit code 1 on any failure.
+
+### `studio.test.js`
+
+The researched studio facts: the hours model and its Mon-first grouping, both branches,
+the Piercing Fridays rate card (day/window/cap/rate, only on the configured day), hero-offer
+arbitration between a dated special and the weekly card, booking-flow branch/artist/hint logic, the
+four Studio OS panels (locations, Fridays, artists, reputation) and their save round-trips, the
+JSON-LD rebuild, and migration from a stale localStorage payload.

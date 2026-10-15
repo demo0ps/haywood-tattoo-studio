@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* Runs every suite against the real page. Usage: cd tests && npm i jsdom && node run-all.js */
 const { execFileSync } = require('child_process');
-const suites = ['specials', 'ui', 'assistant'];
+const suites = ['specials', 'ui', 'assistant', 'studio'];
 let failed = 0;
 for (const s of suites) {
   try {

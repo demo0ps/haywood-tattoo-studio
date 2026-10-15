@@ -2,22 +2,47 @@
 
 > Custom tattoo and piercing in Pretoria, by private appointment or on location. Get an indicative range in minutes, then book. WhatsApp 061 759 3378.
 
-Private, by-appointment tattoo and piercing studio in central Pretoria, Gauteng, South Africa. One artist, no walk-ins. Sessions also run on location within roughly 30 km. Every price on this site is an **indicative range** built from the client brief — the artist confirms the final quote before a design is locked.
+Private tattoo and piercing studio trading as **Haywood Tattoos and Piercings**, with a flagship in Pretoria Central and a second studio in Mabopane, Gauteng, South Africa.
+Custom work is quoted as an **indicative range** built from the client brief — the artist confirms the final quote before a design is locked.
+Tattoo sessions run by appointment; standard piercings can sometimes be taken as a walk-in when a slot is open (most likely on a Friday).
 
 ## Contact and booking
 
 - WhatsApp / calls: 061 759 3378 (https://wa.me/27617593378)
 - Instagram: @haywood_studio (https://instagram.com/haywood_studio)
-- Website: https://demo0ps.github.io/haywood-tattoo-studio/
-- Location: Pretoria, South Africa. The exact studio address is private and is shared once a session is confirmed.
-- Hours: Tuesday to Saturday, by appointment only.
-- Age: 18 or older with a valid South African ID or passport, checked at the first session.
+- Trading name: Haywood Tattoos and Piercings · website www.haywoodstudio.com
+- Booking site: https://demo0ps.github.io/haywood-tattoo-studio/
+- Age: 18 or older with a valid South African ID or passport, checked at the first session. Minors need a parent or guardian for piercings.
+- Reputation: 4.9 stars, from 100+ Google reviews (reported by clients on Google; shown as copy, not as a structured-data claim).
+
+## Locations and hours
+
+- Pretoria Central: 296 Francis Baard Street, Pretoria Central, Pretoria, Gauteng
+  - Mon–Wed 10:00–18:00
+  - Thu 10:00–17:00
+  - Fri–Sat 10:00–18:00
+  - Sun 11:00–17:00
+  - Amenities: On-site parking, Wheelchair-accessible parking, Credit, debit & mobile pay
+- Mabopane: 2241 Martha Modise Street, Mabopane, Tshwane, Gauteng
+  - Mon–Wed 10:00–18:00
+  - Thu 10:00–17:00
+  - Fri–Sat 10:00–18:00
+  - Sun Closed
+  - Amenities: Street parking, Credit & debit cards
+  - Indicative — confirm your slot on WhatsApp.
 
 ## Services
 
 - Custom tattoos: New pieces, cover-ups, touch-ups, blackwork, illustrative, fine-line, colour, and larger projects.
-- Piercing: Thoughtful placement, quality jewelry, clear preparation, and aftercare you can actually follow.
+- Piercing: Ear lobe and cartilage (helix, tragus, conch), nose, tongue, belly and dermal anchors, with implant-grade jewelry and aftercare you can actually follow. Surface piercings are not offered.
 - Mobile sessions: Bring the private Haywood experience to your space. Travel availability and fees are confirmed in your brief.
+
+## Piercing Fridays (standing weekly rate)
+
+- Piercing Fridays: Selected nose, ear lobe and belly piercings at the Friday rate — R100 to R150, between 10:00 and 15:00. Appointment only, capped at 20 slots.
+- Rate: R100–R150 · eligible: Nose · Ear lobe · Belly
+- Weekend perk: book a piercing on Saturday or Sunday and a temporary tooth gem is on the studio — subject to stock and artist sign-off.
+- Conditions: Selected nose, ear and belly piercings at the Friday rate · appointment only, capped per session · jewelry subject to stock · 18+ with valid ID or guardian consent · the artist confirms the price at the chair
 
 ## Indicative pricing
 
@@ -48,7 +73,7 @@ Private, by-appointment tattoo and piercing studio in central Pretoria, Gauteng,
 - Deposit: 30% of the lower end of the range, credited to the final price.
 - Cover-ups and touch-ups: subject to assessment from clear daylight photos.
 - Designs remain the artist's intellectual property; the tattoo belongs to the client.
-- Payments run through a hosted Yoco checkout; the studio never stores card data.
+- Payments run through a hosted Yoco checkout; the studio never stores card data. Cards, debit and mobile pay are accepted at both locations.
 
 ## FAQ (full answers in llms-full.txt)
 
@@ -62,9 +87,13 @@ Private, by-appointment tattoo and piercing studio in central Pretoria, Gauteng,
 - What aftercare does a new piercing need?
 - Who owns the design afterwards?
 - Are the prices on this site final?
+- Which piercings do you do, and do you do surface piercings?
+- What are Piercing Fridays?
+- Where are you, and can I just park outside?
 
 ## Files
 
 - Page: https://demo0ps.github.io/haywood-tattoo-studio/
 - Full facts: https://demo0ps.github.io/haywood-tattoo-studio/llms-full.txt
+- Locations and hours are also in the page as JSON-LD `openingHoursSpecification`, one set per branch.
 - Structured data: JSON-LD in the page head (TattooParlor with OfferCatalog, FAQPage, WebSite)
